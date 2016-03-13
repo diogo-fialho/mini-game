@@ -20,8 +20,9 @@ App = function() {
 	this.onClick = function() {
 		if (this.clicks == 2) {
 			this.clicks = 0;
-			var diffX = event.clientX - wade.getScreenWidth() / 2;
-			var diffY = Math.abs((this.MAX_HEIGHT - 55) - (event.clientY - wade.getScreenHeight() / 2));
+			var cur = wade.getMousePosition();
+			var diffX = cur.x;
+			var diffY = Math.abs((this.MAX_HEIGHT - 55) - cur.y);
 			this.interval = setInterval(function() {wade.app.addBall(diffX, diffY)}, 100);
 		}
 		else if(this.clicks == 1) {
@@ -31,10 +32,11 @@ App = function() {
 	this.addBall = function(diffX, diffY) {
 		if (this.numberBalls < 20) {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
-			var h = Math.sqrt(Math.abs(diffX) + diffY);
+			var h = Math.sqrt( Math.pow(Math.abs(diffX),2) + Math.pow(Math.abs(diffY),2));
 			var ball = ballObject.getBehaviorByIndex(0);
-			ball.velocity.x = (diffX / h) * 0.5;
-			ball.velocity.y = (diffY / h) * 0.5;
+			console.log(h);
+			ball.velocity.x = (diffX / h) * 5;
+			ball.velocity.y = (diffY / h) * 5;
 			wade.addSceneObject(ballObject, true);
 			this.numberBalls++;
 		} else {
