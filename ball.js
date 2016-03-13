@@ -17,13 +17,14 @@ Ball = function() {
     {
         var x = this.owner.getPosition().x;
         var y = this.owner.getPosition().y;
-
+        console.log(" ");
         if (x < -wade.app.MAX_WIDTH + 20 ||
             x > wade.app.MAX_WIDTH - 20) {
             this.velocity.x *= -1;
         }
         if (y < -wade.app.MAX_HEIGHT + 20 ||
             y > this.originalPos.y - 20) {
+            console.log(1);
             this.velocity.y *= -1;
         }
 
