@@ -11,11 +11,11 @@ App = function() {
 		wade.loadImage('imgs/ball.png');
 		wade.loadScript('button.js');
 		wade.loadScript('ball.js');
+		wade.loadScript('box.js');
 	};
 	this.init = function() {
 		wade.addSceneObject(new SceneObject(new Sprite('imgs/background.jpg', 30)));
 		wade.addSceneObject(new SceneObject(0, [Button], 0, (this.MAX_HEIGHT - 25)), true);
-
 	};
 	this.onClick = function() {
 		if (this.clicks == 2) {
@@ -34,7 +34,6 @@ App = function() {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
 			var h = Math.sqrt( Math.pow(Math.abs(diffX),2) + Math.pow(Math.abs(diffY),2));
 			var ball = ballObject.getBehaviorByIndex(0);
-			console.log(h);
 			ball.velocity.x = (diffX / h) * 5;
 			ball.velocity.y = (diffY / h) * 5;
 			wade.addSceneObject(ballObject, true);
@@ -42,5 +41,11 @@ App = function() {
 		} else {
 			clearInterval(this.interval);
 		}
+	}
+
+	this.addBoxes = function(number)
+	{
+
+		wade.addSceneObject(new SceneObject(0, [Box], 0, 0), true);
 	}
 };
