@@ -27,6 +27,7 @@ App = function() {
 		}
 		this.addBoxes();
 	};
+
 	this.onClick = function() {
 		if (this.clicks == 2) {
 			this.clicks = 0;
@@ -39,6 +40,7 @@ App = function() {
 			this.clicks = 2;
 		}
 	};
+
 	this.addBall = function(diffX, diffY) {
 		if (this.numberBalls < 20) {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
