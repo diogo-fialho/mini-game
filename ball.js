@@ -15,7 +15,6 @@ Ball = function() {
     {
         var x = this.owner.getPosition().x;
         var y = this.owner.getPosition().y;
-        console.log("");
         if (x < -wade.app.MAX_WIDTH + 10 ||
             x > wade.app.MAX_WIDTH - 10) {
             this.velocity.x *= -1;
