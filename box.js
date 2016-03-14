@@ -10,8 +10,4 @@ Box = function () {
         this.hits.setColor("blue");
         this.owner.addSprite(this.hits, {x: -10, y: 5}, 0);
     };
-
-    this.onUpdate = function()
-    {
-    };
 };
