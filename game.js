@@ -58,7 +58,7 @@ App = function() {
 		var spaceDiff = 40;
 		var nBox = Math.floor((Math.random() * 7) + 3);
 		for (var i = 0; i < nBox; i++) {
-			for (var pos = Math.floor((Math.random() * 6) + 0); this.boxArray[0][pos] != 0; pos = Math.floor((Math.random() * 6) + 0));
+			var pos = Math.floor((Math.random() * 6) + 0);
 			this.boxArray[0][pos] = new SceneObject(0, [Box], -this.MAX_WIDTH + 20 + spaceDiff * (pos + 1), -this.MAX_HEIGHT + 20);
 			wade.addSceneObject(this.boxArray[0][pos]);
 		}
