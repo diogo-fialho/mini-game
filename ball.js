@@ -15,12 +15,23 @@ Ball = function() {
     {
         var x = this.owner.getPosition().x;
         var y = this.owner.getPosition().y;
+        var overlaps = this.owner.getOverlappingObjects()[0];
         if (x < -wade.app.MAX_WIDTH + 10 ||
-            x > wade.app.MAX_WIDTH - 10) {
+            x > wade.app.MAX_WIDTH - 10 ||
+                (overlaps != undefined &&
+                overlaps.getSprite().getName() == "box" && (
+                    x < overlaps.getPosition().x - 25 ||
+                    x > overlaps.getPosition().x + 25
+            ))) {
             this.velocity.x *= -1;
         }
         if (y < -wade.app.MAX_HEIGHT + 10 ||
-            y > this.originalPos.y) {
+            y > this.originalPos.y ||
+            (overlaps != undefined &&
+            overlaps.getSprite().getName() == "box" && (
+                y < overlaps.getPosition().y - 25 ||
+                y > overlaps.getPosition().y + 25
+            ))) {
             this.velocity.y *= -1;
         }
 

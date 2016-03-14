@@ -42,12 +42,12 @@ App = function() {
 	};
 
 	this.addBall = function(diffX, diffY) {
-		if (this.numberBalls < 20) {
+		if (this.numberBalls < 3) {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
 			var h = Math.sqrt( Math.pow(Math.abs(diffX),2) + Math.pow(Math.abs(diffY),2));
 			var ball = ballObject.getBehaviorByIndex(0);
 			ball.velocity.x = (diffX / h) * 5;
-			ball.velocity.y = (diffY / h) * 5;
+			ball.velocity.y = (diffY / h) * -5;
 			wade.addSceneObject(ballObject, true);
 			this.numberBalls++;
 		} else {
