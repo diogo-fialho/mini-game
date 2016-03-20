@@ -20,23 +20,21 @@ Ball = function() {
             x > wade.app.MAX_WIDTH - 10 ||
                 (overlaps != undefined &&
                 overlaps.getSprite().getName() == "box" && (
-                    x < overlaps.getPosition().x - 26 ||
-                    x > overlaps.getPosition().x + 26
+                    x < overlaps.getPosition().x - 25 ||
+                    x > overlaps.getPosition().x + 25
             ))) {
-            if(overlaps != undefined && overlaps.getSprite().getName() == "box") overlaps.getBehavior(0).hitted();
             this.velocity.x *= -1;
         }
         if (y < -wade.app.MAX_HEIGHT + 10 ||
             y > this.originalPos.y ||
             (overlaps != undefined &&
             overlaps.getSprite().getName() == "box" && (
-                y < overlaps.getPosition().y - 26 ||
-                y > overlaps.getPosition().y + 26
+                y < overlaps.getPosition().y - 25 ||
+                y > overlaps.getPosition().y + 25
             ))) {
-            if(overlaps != undefined && overlaps.getSprite().getName() == "box") overlaps.getBehavior(0).hitted();
             this.velocity.y *= -1;
         }
-
+        if(overlaps != undefined && overlaps.getSprite().getName() == "box") overlaps.getBehavior(0).hitted();
         x += this.velocity.x;
         y += this.velocity.y;
 

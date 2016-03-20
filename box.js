@@ -12,9 +12,15 @@ Box = function () {
         this.owner.addSprite(this.sprite);
         this.owner.addSprite(this.text, {x: -10, y: 5});
     };
+
     this.hitted = function()
     {
         this.hits--;
-        this.text.setText(this.hits.toString());
+        if (this.hits != 0) {
+            this.text.setText(this.hits.toString());
+            this.sprite.setDrawFunction(wade.drawFunctions.fadeOpacity_(0, 1, 0.08, this.sprite.draw));
+        } else {
+            wade.removeSceneObject(this.owner);
+        }
     }
 };
