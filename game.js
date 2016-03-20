@@ -3,18 +3,20 @@ App = function() {
 	this.MAX_HEIGHT = 225;
 	this.MAX_WIDTH = 141;
 	this.clicks = 0;
-	this.numberBalls = 0;
+	this.number_balls = 0;
 	this.boxArray = [[]];
 	this.maxBoxLine = 7;
+	this.play_number = 1;
 
 	this.load = function() {
-		wade.loadImage('imgs/background.jpg');
-		wade.loadImage('imgs/button.png');
-		wade.loadImage('imgs/ball.png');
 		wade.loadScript('button.js');
 		wade.loadScript('ball.js');
 		wade.loadScript('box.js');
+		wade.loadImage('imgs/background.jpg');
+		wade.loadImage('imgs/button.png');
+		wade.loadImage('imgs/ball.png');
 	};
+
 	this.init = function() {
 		var spriteBackground = new Sprite('imgs/background.jpg', 30);
 		spriteBackground.setSize(282, 450);
@@ -42,14 +44,14 @@ App = function() {
 	};
 
 	this.addBall = function(diffX, diffY) {
-		if (this.numberBalls < 3) {
+		if (this.number_balls < 1) {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
 			var h = Math.sqrt( Math.pow(Math.abs(diffX),2) + Math.pow(Math.abs(diffY),2));
 			var ball = ballObject.getBehaviorByIndex(0);
 			ball.velocity.x = (diffX / h) * 5;
 			ball.velocity.y = (diffY / h) * -5;
 			wade.addSceneObject(ballObject, true);
-			this.numberBalls++;
+			this.number_balls++;
 		} else {
 			clearInterval(this.interval);
 		}

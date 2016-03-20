@@ -1,6 +1,7 @@
 Box = function () {
 
     this.hits = 100;
+    
     this.onAddToScene = function ()
     {
         this.sprite = new Sprite();
@@ -12,7 +13,7 @@ Box = function () {
         this.owner.addSprite(this.sprite);
         this.owner.addSprite(this.text, {x: -10, y: 5});
     };
-
+    
     this.hitted = function()
     {
         this.hits--;
