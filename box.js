@@ -1,6 +1,6 @@
 Box = function () {
 
-    this.hits = 100;
+    this.hits = wade.app.play_number;
     
     this.onAddToScene = function ()
     {
@@ -23,5 +23,12 @@ Box = function () {
         } else {
             wade.removeSceneObject(this.owner);
         }
-    }
+    };
+    
+    this.moveBox = function (i, j) 
+    {
+        this.owner.setPosition(this.owner.getPosition().x, this.owner.getPosition().y + 40);
+        wade.app.boxArray[i + 1][j] = wade.app.boxArray[i][j];
+        wade.app.boxArray[i][j] = 0;
+    };
 };
