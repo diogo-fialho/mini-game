@@ -27,7 +27,7 @@ Box = function () {
     
     this.moveBox = function (i, j) 
     {
-        this.owner.setPosition(this.owner.getPosition().x, this.owner.getPosition().y + 40);
+        this.owner.moveTo(this.owner.getPosition().x, this.owner.getPosition().y + 40, 1000);
         wade.app.boxArray[i + 1][j] = wade.app.boxArray[i][j];
         wade.app.boxArray[i][j] = 0;
     };
