@@ -7,6 +7,7 @@ App = function() {
 	this.boxArray = [[]];
 	this.maxBoxLine = 7;
 	this.play_number = 1;
+	this.can_play = true;
 
 	this.load = function() {
 		wade.loadScript('button.js');
@@ -31,20 +32,21 @@ App = function() {
 	};
 
 	this.onClick = function() {
-		if (this.clicks == 2) {
+		if (this.clicks == 2 && this.can_play) {
 			this.clicks = 0;
 			var cur = wade.getMousePosition();
 			var diffX = cur.x;
 			var diffY = Math.abs((this.MAX_HEIGHT - 55) - cur.y);
 			this.interval = setInterval(function() {wade.app.addBall(diffX, diffY)}, 90);
+			this.can_play = false;
 		}
-		else if(this.clicks == 1) {
+		else if(this.clicks == 1 && this.can_play) {
 			this.clicks = 2;
 		}
 	};
 
 	this.addBall = function(diffX, diffY) {
-		if (this.number_balls < 1) {
+		if (this.number_balls < 4) {
 			var ballObject = new SceneObject(0, [Ball], 0, (this.MAX_HEIGHT - 55));
 			var h = Math.sqrt( Math.pow(Math.abs(diffX),2) + Math.pow(Math.abs(diffY),2));
 			var ball = ballObject.getBehaviorByIndex(0);

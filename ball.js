@@ -11,6 +11,8 @@ Ball = function() {
     };
     this.onMoveComplete = function() {
         wade.removeSceneObject(this.owner);
+        wade.app.number_balls--;
+        if (wade.app.number_balls == 0) wade.app.can_play = true;
     };
     this.onUpdate = function()
     {
