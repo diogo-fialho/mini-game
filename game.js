@@ -70,6 +70,7 @@ App = function() {
 			if (this.boxArray[0][pos] == 0) {
 				this.boxArray[0][pos] = new SceneObject(0, [Box], -this.MAX_WIDTH + 20 + spaceDiff * pos, -this.MAX_HEIGHT + 20);
 				wade.addSceneObject(this.boxArray[0][pos]);
+				this.boxArray[0][pos].getBehavior().moveBox(0, pos)
 			}
 		}
 	};
